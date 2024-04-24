@@ -1,0 +1,354 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* .color-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 20px 10px; 
+  margin-bottom: 60px; 
+}
+
+.color-item {
+  cursor: pointer;
+  width: 100%; 
+  height: 50px; 
+  border: 1px solid #000;
+  position: relative;
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+  margin-bottom: 40px; 
+} */
+
+.color-item-out::after {
+  content: attr(data-color-name); /* uses the data attribute to show the color name */
+  position: absolute; /* positions the label absolutely within the color-item */
+  bottom: -35px; /* increases space to move the label down */
+  left: 50%;
+  transform: translateX(-50%); /* centers the label */
+  font-size: 12px; /* adjusts the font size of the label */
+}
+.color-item:after {
+  content: attr(data-color-name); /* uses the data attribute to show the color name */
+  position: absolute; /* positions the label absolutely within the color-item */
+  bottom: -35px; /* increases space to move the label down */
+  left: 50%;
+  transform: translateX(-50%); /* centers the label */
+  font-size: 12px; /* adjusts the font size of the label */
+}
+
+.color-item-out:hover {
+  opacity: 0.7;
+}
+.color-item:hover {
+  opacity: 0.7;
+}
+.tabs {
+  display: flex;
+  justify-content: flex-end;
+  background-color: #d3d3d3;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+}
+
+.tablinks {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: background-color 0.3s;
+  font-size: 17px;
+}
+
+.tablinks.active {
+  background-color: #f1f1f1;
+}
+
+/* Adjust the .tabcontent for vertical layout */
+.tabcontent {
+  display: none; /* keep it hidden by default */
+  padding: 6px 12px;
+  border-top: none;
+  position: absolute; /* Position it absolutely within the parent element */
+  right: 0; /* Aligns the content to the right */
+  top: 50px; /* Adjust this value to the height of your tabs */
+  width: 15%;
+}
+
+
+/* Adjust the .tabcontent for smaller screens */
+@media screen and (max-width: 768px) {
+  .tabcontent {
+    width: 95%; /* Increase the width on smaller screens */
+    max-width: none; /* Remove max-width on smaller screens */
+  }
+}
+
+/* Adjust the styling for your images */
+.tabcontent a {
+  display: block; /* each link will take the full width available */
+  text-align: center; /* this will center the images within the links */
+  margin-bottom: 10px; /* this adds some space between the images */
+}
+
+/* Reduce the size of the images */
+.tabcontent img {
+  max-width: 100px; /* set a max-width or width */
+  max-height: 100px; /* set a max-height */
+  width: auto; /* keep the aspect ratio */
+  height: auto; /* keep the aspect ratio */
+  /* border: solid 1px #ccc; */
+  padding: 5px;
+}
+
+.style-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* sets a grid with 2 columns */
+  gap: 20px; /* adds a gap between the grid items */
+  padding: 20px; /* adds padding around the grid */
+  text-align: center; /* centers the text and images */
+}
+
+.style-item {
+/*  border: 1px solid #ccc;  optional border around the style item */
+  padding: 5px; /* padding inside the style item */
+  cursor: pointer; /* changes the cursor to pointer when hovering over the item */
+}
+
+.style-item img {
+  width: 100%; /* ensures the image scales to the width of the column */
+  height: auto; /* maintains the image aspect ratio */
+  margin-bottom: 10px; /* space between the image and the style name */
+}
+
+.style-name {
+  font-size: 14px; /* font size for the style name */
+  color: #333; /* color for the style name */
+}
+
+/* Responsive adjustments for smaller screens */
+@media screen and (max-width: 768px) {
+  .style-options {
+    grid-template-columns: 1fr; /* changes to a single column layout for smaller screens */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .style-options {
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr)); /* further adjust the column size for mobile screens */
+  }
+}
+
+
+#Config {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#configForm {
+  width: 100%; /* You may adjust this depending on how wide you want the form to be */
+  max-width: 300px; /* This will ensure the form doesn't get too wide on large screens */
+}
+
+#configForm label {
+  display: block;
+  margin-top: 20px;
+}
+
+#configForm input[type="number"] {
+  /* width: 100%; */
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.submit-btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  background-color: #4CAF50; /* This is the green color from the submit button in your image */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  opacity: 0.9;
+}
+
+canvas {
+  display: block;
+    width: 81.6%;
+    height: 100vh;
+}
+
+/* loader */
+
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.glitch {
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #fff;
+  letter-spacing: 5px;
+  position: relative;
+  z-index: 9999;
+  animation: shift 1s ease-in-out infinite alternate;
+}
+
+.glitch:before,
+.glitch:after {
+  display: block;
+  content: attr(data-glitch);
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.8;
+}
+
+.glitch:before {
+  animation: glitch 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+  color: #8b00ff;
+  z-index: -1;
+}
+
+.glitch:after {
+  animation: glitch 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both infinite;
+  color: #00e571;
+  z-index: -2;
+}
+
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+
+  20% {
+    transform: translate(-3px, 3px);
+  }
+
+  40% {
+    transform: translate(-3px, -3px);
+  }
+
+  60% {
+    transform: translate(3px, 3px);
+  }
+
+  80% {
+    transform: translate(3px, -3px);
+  }
+
+  to {
+    transform: translate(0);
+  }
+}
+
+@keyframes shift {
+  0%, 40%, 44%, 58%, 61%, 65%, 69%, 73%, 100% {
+    transform: skewX(0deg);
+  }
+
+  41% {
+    transform: skewX(10deg);
+  }
+
+  42% {
+    transform: skewX(-10deg);
+  }
+
+  59% {
+    transform: skewX(40deg) skewY(10deg);
+  }
+
+  60% {
+    transform: skewX(-40deg) skewY(-10deg);
+  }
+
+  63% {
+    transform: skewX(10deg) skewY(-5deg);
+  }
+
+  70% {
+    transform: skewX(-50deg) skewY(-20deg);
+  }
+
+  71% {
+    transform: skewX(10deg) skewY(-10deg);
+  }
+}
+
+/* Media Queries for Mobile and Tablet Screens */
+@media (max-width: 768px) {
+  .glitch {
+    font-size: 20px; /* Adjust loader font size */
+  }
+
+  #loader {
+    align-items: flex-start; /* Align loader content to the top */
+    padding-top: 20%; /* Add padding to the top of the loader */
+  }
+}
+
+@media (max-width: 480px) {
+  .glitch {
+    font-size: 16px; /* Adjust loader font size */
+  }
+
+  #loader {
+    padding-top: 30%; /* Further adjust padding for smaller screens */
+  }
+}
+
+.color-item-out {
+  margin-bottom: 10px;
+}
+.color-item {
+  margin-bottom: 10px;
+}
+.color-item-out {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  cursor: pointer;
+  margin-right: 5px;
+  border: 1px solid #ccc;
+}
+
+.color-item {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  cursor: pointer;
+  margin-right: 5px;
+  border: 1px solid #ccc;
+}
+
+input[type="color"] {
+  cursor: pointer;
+  border: none;
+  height: 30px;
+  width: 100%; /* Take the full width of the container */
+}

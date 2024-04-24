@@ -1,0 +1,21 @@
+# Wavefront material library
+# Thu Oct 26 10:48:42 2000
+# Created with Viewpoint Interchange www.viewpoint.com
+
+newmtl bglove_exterior
+  Ka 0 0 0
+  Kd 0.517647 0.345098 0.215686
+  Ks 0 0 0
+  illum 2
+
+newmtl bglove_interior
+  Ka 0 0 0
+  Kd 0.666667 0.552941 0.32549
+  Ks 0 0 0
+  illum 2
+
+newmtl bglove_stitches
+  Ka 0 0 0
+  Kd 0.501961 0.25098 0
+  Ks 0.172549 0.172549 0.172549
+  illum 2

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Baseball Gloves
+* source:	https://sketchfab.com/3d-models/baseball-gloves-e7f88026659a46128ee84611015441db
+* author:	puihung (https://sketchfab.com/Puihung)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Baseball Gloves" (https://sketchfab.com/3d-models/baseball-gloves-e7f88026659a46128ee84611015441db) by puihung (https://sketchfab.com/Puihung) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
