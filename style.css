@@ -22,17 +22,23 @@ body, html {
   justify-content: center; 
   margin-bottom: 40px; 
 } */
+.color-item-out:hover , .color-item:hover, .color-item-leg:hover{
+  opacity: 0.7;
+}
 
-.color-item-out::after {
-  content: attr(data-color-name); /* uses the data attribute to show the color name */
+
+
+
+.material-item-out::after {
+  content: attr(data-material-name); /* uses the data attribute to show the color name */
   position: absolute; /* positions the label absolutely within the color-item */
   bottom: -35px; /* increases space to move the label down */
   left: 50%;
   transform: translateX(-50%); /* centers the label */
   font-size: 12px; /* adjusts the font size of the label */
 }
-.color-item:after {
-  content: attr(data-color-name); /* uses the data attribute to show the color name */
+.material-item:after {
+  content: attr(data-material-name); /* uses the data attribute to show the color name */
   position: absolute; /* positions the label absolutely within the color-item */
   bottom: -35px; /* increases space to move the label down */
   left: 50%;
@@ -40,12 +46,39 @@ body, html {
   font-size: 12px; /* adjusts the font size of the label */
 }
 
-.color-item-out:hover {
+.material-item-out:hover {
   opacity: 0.7;
 }
-.color-item:hover {
+.material-item:hover {
   opacity: 0.7;
 }
+
+
+.material-item-out::after {
+  content: attr(data-material-name); /* uses the data attribute to show the color name */
+  position: absolute; /* positions the label absolutely within the color-item */
+  bottom: -35px; /* increases space to move the label down */
+  left: 50%;
+  transform: translateX(-50%); /* centers the label */
+  font-size: 12px; /* adjusts the font size of the label */
+}
+.material-item:after {
+  content: attr(data-material-name); /* uses the data attribute to show the color name */
+  position: absolute; /* positions the label absolutely within the color-item */
+  bottom: -35px; /* increases space to move the label down */
+  left: 50%;
+  transform: translateX(-50%); /* centers the label */
+  font-size: 12px; /* adjusts the font size of the label */
+}
+
+.material-item-out:hover {
+  opacity: 0.7;
+}
+.material-item:hover {
+  opacity: 0.7;
+}
+
+
 .tabs {
   display: flex;
   justify-content: flex-end;
@@ -325,10 +358,10 @@ canvas {
 .color-item-out {
   margin-bottom: 10px;
 }
-.color-item {
+.color-item , .color-item-leg {
   margin-bottom: 10px;
 }
-.color-item-out {
+.color-item-out , .color-item-leg{
   width: 30px;
   height: 30px;
   display: inline-block;
@@ -337,7 +370,7 @@ canvas {
   border: 1px solid #ccc;
 }
 
-.color-item {
+.color-item , .color-item-leg {
   width: 30px;
   height: 30px;
   display: inline-block;
@@ -351,4 +384,95 @@ input[type="color"] {
   border: none;
   height: 30px;
   width: 100%; /* Take the full width of the container */
+}
+.color-item:after, .color-item-out:after, .color-item-leg:after {
+  content: attr(data-color-name); /* Uses the data attribute to show the color name */
+  position: absolute; /* Positions the label absolutely within the color-item */
+  bottom: -20px; /* Adjust this value to position the label closer to the button */
+  /* left: 50%; */
+  /* transform: translateX(-50%); */ /* Centers the label */
+  font-size: 12px; /* Adjusts the font size of the label */
+  white-space: nowrap; /* Ensures the text does not break into multiple lines */
+}
+
+.color-item, .color-item-out , .color-item-leg{
+  position: relative; /* Necessary for absolute positioning of the :after content */
+  width: 30px; /* Button width */
+  height: 30px; /* Button height */
+  display: inline-block;
+  cursor: pointer;
+  margin-right: 25px;
+  border: 1px solid #ccc;
+  /* margin-bottom: 40px; */ /* Increase bottom margin to accommodate the label */
+}
+
+
+
+
+.material-item-out {
+  margin-bottom: 10px;
+}
+.material-item , .material-item-leg {
+  margin-bottom: 10px;
+}
+.material-item-out , .material-item-leg{
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  cursor: pointer;
+  margin-right: 5px;
+  border: 1px solid #ccc;
+}
+
+.material-item , .material-item-leg {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  cursor: pointer;
+  margin-right: 5px;
+  border: 1px solid #ccc;
+}
+
+
+.material-item:after, .material-item-out:after, .material-item-leg:after {
+  content: attr(data-material-name); /* Uses the data attribute to show the color name */
+  position: absolute; /* Positions the label absolutely within the material-item */
+  bottom: -20px; /* Positions the label 20px below the button */
+  left: 50%; /* Centers the label horizontally relative to its parent */
+  transform: translateX(-50%); /* Ensures perfect horizontal centering */
+  font-size: 12px; /* Adjusts the font size of the label */
+  white-space: nowrap; /* Prevents the label from wrapping onto multiple lines */
+  color: #333; /* Sets the text color */
+  text-align: center; /* Aligns the text centrally within the label */
+  background-color: rgba(255, 255, 255, 0.8); /* Optional: adds a light background for better readability */
+  padding: 2px 5px; /* Adds some padding around the text */
+  border-radius: 4px; /* Optional: rounds the corners of the background */
+  width: auto; /* Adjusts width to content size */
+  max-width: 100px; /* Prevents label from being too wide */
+  overflow: hidden; /* Hides any overflow */
+  box-sizing: border-box; /* Includes padding in width calculation */
+}
+
+.material-item, .material-item-out, .material-item-leg {
+  position: relative; /* Necessary for absolute positioning of the :after content */
+  width: 30px; /* Button width */
+  height: 30px; /* Button height */
+  display: inline-block;
+  cursor: pointer;
+  margin-right: 25px;
+  border: 1px solid #ccc;
+  margin-bottom: 60px; /* Increase bottom margin to accommodate the label */
+}
+
+.material-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Create three columns */
+  gap: 20px; /* Space between grid items */
+  justify-content: start; /* Align grid to the start if there's extra space */
+}
+
+.material-item-leg {
+  height: 30px;
+  cursor: pointer;
+  border: 1px solid #ccc;
 }

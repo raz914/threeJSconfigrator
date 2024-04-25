@@ -36,10 +36,11 @@ class windowConfig{
 
 
   Init(){
-  //   const valisRedButton = document.querySelector('.color-item[style="background-color:#B22222;"]');
+  //   const valisRedButton = document.querySelector('.color-item[style="background-color:#800020;"]');
   // valisRedButton.addEventListener('click', () => {
-  //   this.outerHandleColorButtonClick("Valis Red");})
-
+  //   this.outerHandleColorButtonClick("Burgundy");})
+  this.addReflectivePlane();
+    
   window.addEventListener("load", () => {
     const styleImages = document.querySelectorAll('.style-img');  // Select all images with class 'style-img'
     
@@ -72,6 +73,42 @@ class windowConfig{
           });
       });
       
+      
+      const colorItemsLeg = document.querySelectorAll(".color-item-leg");  // Select all elements with class 'color-item'
+
+      colorItemsLeg.forEach(item => {
+          item.addEventListener('click', () => {
+              const colorName = item.dataset.colorName;  // Get the color name from the data-color-name attribute
+              this.HandleColorButtonClickLeg(colorName);
+          });
+      });
+
+      const materialItems = document.querySelectorAll(".material-item");  // Select all elements with class 'color-item'
+
+      materialItems.forEach(item => {
+          item.addEventListener('click', () => {
+              const matName = item.dataset.materialName;  // Get the color name from the data-color-name attribute
+              this.handleMatButtonClick(matName);
+          });
+      });
+
+      const materialItemsOut = document.querySelectorAll(".material-item-out");  // Select all elements with class 'color-item'
+
+      materialItemsOut.forEach(item => {
+          item.addEventListener('click', () => {
+              const matName = item.dataset.materialName;  // Get the color name from the data-color-name attribute
+              this.handleMatButtonClickInner(matName);
+          });
+      });
+
+      const materialItemsLeg= document.querySelectorAll(".material-item-leg");  // Select all elements with class 'color-item'
+
+      materialItemsLeg.forEach(item => {
+          item.addEventListener('click', () => {
+              const matName = item.dataset.materialName;  // Get the color name from the data-color-name attribute
+              this.handleMatButtonClickLeg(matName);
+          });
+      });
 
     
       // If you have color pickers and need to handle changes:
@@ -81,8 +118,12 @@ class windowConfig{
               const pickerId = picker.id;  // Get the ID of the picker
               const colorValue = picker.value;  // Get the new color value
               console.log(`${pickerId} changed to:`, colorValue);
-              if(pickerId=="outerColorPicker")
-              this.customColorOut(colorValue)
+              if(pickerId=="outerColorPicker"){
+              this.customColorOut(colorValue)}
+              else if(pickerId=="legColorPicker"){
+
+                this.customColorLeg(colorValue)
+              }
             else
               this.customColorInner(colorValue)
               // Additional actions based on the new color value can be added here
@@ -94,7 +135,7 @@ class windowConfig{
 window.addEventListener('resize', this.onWindowResize, false);
 
     this.camera.position.set(0, 0, 5);
-    this.scene.background = new THREE.Color( 'gray' );
+    this.scene.background = new THREE.Color( 'black' );
 
     this.loadGLBModel();
     // this.loadOBJModel();
@@ -113,46 +154,174 @@ window.addEventListener('resize', this.onWindowResize, false);
     this.temp['mesh2'].material.color.set(colorHex);
 
   }
+  customColorLeg(colorHex){
+    this.temp['mesh3'].material.color.set(colorHex);
+    this.temp['mesh4'].material.color.set(colorHex);
+
+  }
 
  outerHandleColorButtonClick(colorName) {
     console.log("Hello, I'm ", colorName);
-    if(colorName=="Valis Red"){
+    if(colorName=="Burgundy"){
       console.log("this.temp",this.temp)
       this.temp['mesh1'].material.color.set("#B22222");
 
      
      //back leg//back leg
       }
-    if(colorName=="Avocado"){
+    if(colorName=="Espresso"){
      
-        this.temp["mesh1"].material.color.set("#FFC0CB");
+        this.temp["mesh1"].material.color.set("#3E2723");
       } 
 
-      if(colorName=="Geneva blue"){
+      if(colorName=="Tan"){
        
         // this.temp["mesh3"] = this.temp["mesh3"].material.clone(); // NOTE Create unique instance of the original material, only applied to this mesh
-        this.temp["mesh1"].material.color.set("#0F52BA");
+        this.temp["mesh1"].material.color.set("#8B4513");
        //back leg//back leg
       } 
   }
-  innerHandleColorButtonClick(colorName) {
+
+  HandleColorButtonClickLeg(colorName){
     console.log("Hello, I'm ", colorName);
-    if(colorName=="Valis Red"){
+    if(colorName=="Burgundy"){
       console.log("this.temp",this.temp)
-      this.temp['mesh2'].material.color.set("#B22222");
+      this.temp['mesh3'].material.color.set("#800020");
+      this.temp['mesh4'].material.color.set("#800020");
 
      
      //back leg//back leg
       }
-    if(colorName=="Avocado"){
+    if(colorName=="Espresso"){
      
-        this.temp["mesh2"].material.color.set("#FFC0CB");
+        this.temp["mesh3"].material.color.set("#3E2723");
+        this.temp["mesh4"].material.color.set("#3E2723");
+
       } 
 
-      if(colorName=="Geneva blue"){
+      if(colorName=="Tan"){
        
         // this.temp["mesh3"] = this.temp["mesh3"].material.clone(); // NOTE Create unique instance of the original material, only applied to this mesh
-        this.temp["mesh2"].material.color.set("#0F52BA");
+        this.temp["mesh4"].material.color.set("#8B4513");
+        this.temp["mesh3"].material.color.set("#8B4513");
+
+       //back leg//back leg
+      } 
+
+  }
+
+  handleMatButtonClickInner(matName){
+    if(matName=="Burgundy"){
+    const defaultColor = this.temp["mesh1"].material.color.clone();
+      this.temp["mesh1"].material.map = this.burgundyTexture;
+   
+      // this.temp["mesh1"].material.color.copy(defaultColor); 
+    this.temp["mesh1"].material.color.set("#800020");
+    // inner color
+      
+    }
+    
+    else if(matName=="Espresso"){ 
+      
+      const defaultColor = this.temp["mesh1"].material.color.clone();
+      this.temp["mesh1"].material.map = this.brownTexture;
+
+    this.temp["mesh1"].material.color.set("#3E2723");
+    // this.temp["mesh1"].material.color.copy(defaultColor);
+
+
+
+  }
+    else if(matName=="Tan"){
+    const defaultColor = this.temp["mesh1"].material.color.clone();
+  
+      
+      this.temp["mesh1"].material.map = this.tanTexture;
+    this.temp["mesh1"].material.color.set("#8B4513");
+
+      // this.temp["mesh1"].material.color.copy(defaultColor);
+  
+  
+  }
+
+    
+      console.log("mat in", matName)
+
+
+    }
+  
+
+  
+  handleMatButtonClick(matName){
+
+    
+    if(matName=="Burgundy"){
+      const defaultColor = this.temp["mesh2"].material.color.clone();
+        this.temp["mesh2"].material.map = this.burgundyTexture;
+     
+        // this.temp["mesh1"].material.color.copy(defaultColor); 
+      this.temp["mesh2"].material.color.set("#800020");
+      // inner color
+        
+      }
+      
+      else if(matName=="Espresso"){ 
+        
+        const defaultColor = this.temp["mesh2"].material.color.clone();
+        this.temp["mesh2"].material.map = this.brownTexture;
+  
+      this.temp["mesh2"].material.color.set("#3E2723");
+      // this.temp["mesh1"].material.color.copy(defaultColor);
+  
+  
+  
+    }
+      else if(matName=="Tan"){
+      const defaultColor = this.temp["mesh2"].material.color.clone();
+    
+        
+        this.temp["mesh2"].material.map = this.tanTexture;
+      this.temp["mesh2"].material.color.set("#8B4513");
+  
+        // this.temp["mesh1"].material.color.copy(defaultColor);
+    
+    
+    }
+  
+      
+        
+  
+  
+      
+
+
+  }
+
+  handleMatButtonClickLeg(matName){
+    console.log("mat leg", matName)
+
+
+  }
+
+
+  innerHandleColorButtonClick(colorName) {
+    console.log("Hello, I'm ", colorName);
+    if(colorName=="Burgundy"){
+      console.log("this.temp",this.temp)
+      this.temp['mesh2'].material.color.set("#800020");
+
+     
+     //back leg//back leg
+      }
+    if(colorName=="Espresso"){
+     
+        this.temp["mesh2"].material.color.set("#3E2723");
+      } 
+
+      if(colorName=="Tan"){
+       
+        // this.temp["mesh3"] = this.temp["mesh3"].material.clone(); // NOTE Create unique instance of the original material, only applied to this mesh
+        this.temp["mesh2"].material.color.set("#8B4513");
        //back leg//back leg
       } 
   }
@@ -176,10 +345,15 @@ window.addEventListener('resize', this.onWindowResize, false);
 
     const objLoader = new OBJLoader(manager);
 
-    const textureLoader = new THREE.TextureLoader();
-    // const texture = textureLoader.load(textureUrl);
+    const textureLoader = new THREE.TextureLoader(manager);
+    // this.brownTexture = textureLoader.load('assets/mat/brown.jpg');
+    // this.burgundyTexture = textureLoader.load('assets/mat/burgundy.jpg');
+    // this.tanTexture = textureLoader.load('assets/mat/burgundy.jpg');
+
+
 
     manager.onLoad = () => {
+      // console.log("hello", this.brownTexture)
       this.meshes = [];
       for (let i = 0; i < this.windowModel.children.length; i++) {
         this.meshes[i] = this.windowModel.children[i];
@@ -238,7 +412,10 @@ window.addEventListener('resize', this.onWindowResize, false);
   loadGLBModel() {
     this.loadingManager = new THREE.LoadingManager()
     const manager = new THREE.LoadingManager();
-  //   const textureLoader = new THREE.TextureLoader();
+    const textureLoader = new THREE.TextureLoader();
+        this.brownTexture = textureLoader.load('assets/mat/brown.jpg');
+    this.burgundyTexture = textureLoader.load('assets/mat/burgundy.jpg');
+    this.tanTexture = textureLoader.load('assets/mat/burgundy.jpg');
   //   // const texture = textureLoader.load('chosen/textures/brown.jpg');
   //   const texture = textureLoader.load('chosen/textures/brown.jpg', (tex) => {
   //     tex.wrapS = THREE.RepeatWrapping;
@@ -263,16 +440,30 @@ window.addEventListener('resize', this.onWindowResize, false);
       console.log("this.tempio", this.temp)
       this.m1 = this.temp["mesh1"]
       if (this.m1.material) {
+        const defaultColor = this.temp["mesh1"].material.color.clone();
+
         this.m1.material = this.m1.material.clone(); // NOTE Create unique instance of the original material, only applied to this mesh
-        this.m1.material.color.set("black"); //outer color
-        // this.m1.material.map = texture;
+        this.m1.material.map = this.brownTexture;
+        // this.m1.material.color.copy(defaultColor);
+        this.temp["mesh1"].material.color.set("#3E2723");
+
+
+        // this.m1.material.color.set("#3E2723"); //outer color
         // this.m1.material.needsUpdate = true;  
       }
       if (this.temp["mesh2"].material) {
+        const defaultColor = this.temp["mesh2"].material.color.clone();
+
         this.temp["mesh2"].material = this.temp["mesh2"].material.clone(); // NOTE Create unique instance of the original material, only applied to this mesh
-        this.temp["mesh2"].material.color.set("#5C4033"); // inner color
+        this.temp["mesh2"].material.map = this.tanTexture; 
+        // this.temp["mesh2"].material.color.copy(defaultColor);
+        this.temp["mesh2"].material.color.set("#8B4513");
+
+        // inner color
       }
       if (this.temp["mesh3"].material) {
+        // const defaultColor = this.temp["mesh3"].material.color.clone();
+
         this.temp["mesh3"].material = this.temp["mesh3"].material.clone(); // NOTE Create unique instance of the original material, only applied to this mesh
         this.temp["mesh3"].material.color.set("#4d432a"); // front leg
         this.temp["mesh3"].visible = false //back leg
@@ -320,14 +511,69 @@ window.addEventListener('resize', this.onWindowResize, false);
       console.error(error);
     });
   }
+  addReflectivePlane() {
+    const planeGeometry = new THREE.PlaneGeometry(500, 500);
+    const reflectTexture = this.setupReflection(); // Setup and get the reflection texture
+
+    const planeMaterial = new THREE.MeshStandardMaterial({
+        color: "#47453E",
+        metalness: 0.8,
+        roughness: 0.2,
+        envMap: reflectTexture,
+        envMapIntensity: 1
+    });
+
+    this.plane = new THREE.Mesh(planeGeometry, planeMaterial);
+    this.plane.rotation.x = -Math.PI / 2;
+    this.  plane.position.y = -2;
+    this.plane.receiveShadow = true;
+    this.scene.add(this.plane);
+}
+setupReflection() {
+  const cubeRenderTarget = new THREE.WebGLCubeRenderTarget(256, {
+      format: THREE.RGBFormat,
+      generateMipmaps: true,
+      minFilter: THREE.LinearMipmapLinearFilter, // Mipmaps for blurring
+  });
+  this.cubeCamera = new THREE.CubeCamera(1, 1000, cubeRenderTarget);
+
+  this.scene.add(this.cubeCamera);
+  return cubeRenderTarget.texture;
+}
+
+
+  // setupLighting() {
+  //   const ambientLight = new THREE.AmbientLight(0xffffff, 10);
+  //   ambientLight.position.set(5, 20, 10);
+  //   this.scene.add(ambientLight);}
   setupLighting() {
-    const ambientLight = new THREE.AmbientLight(0xffffff, 10);
-    ambientLight.position.set(5, 20, 10);
-    this.scene.add(ambientLight);}
+    // this.scene.remove(this.scene.getObjectByName("ambientLight")); // Assuming you named your light
+
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 3); // Adjust color and intensity as needed
+    directionalLight.position.set(10, 10, 10);
+    directionalLight.castShadow = true;
+    directionalLight.shadow.mapSize.width = 512; // Default is 512
+    directionalLight.shadow.mapSize.height = 512; // Default is 512
+    directionalLight.shadow.camera.near = 0.5;
+    directionalLight.shadow.camera.far = 500;
+    
+    this.scene.add(directionalLight);
+
+    // Optional: Adding an ambient light for subtle illumination without shadows
+    const ambientLight = new THREE.AmbientLight(0x404040,222); // Soft white light
+    this.scene.add(ambientLight);
+}
 
     animate() {
       requestAnimationFrame(this.animate.bind(this)); // Make sure to bind this or use an arrow function
       // // Any rotation or animation logic here
+
+      if (this.cubeCamera) {
+        this.cubeCamera.position.copy(this.plane.position); // Ensure the cube camera is at the position of the plane
+        this.plane.visible = false; // Hide the plane to avoid self-reflection
+        this.cubeCamera.update(this.renderer, this.scene); // Update the environment map
+        this.plane.visible = true; // Show the plane again
+    }
       this.renderer.render(this.scene, this.camera);
     }
     
@@ -352,6 +598,7 @@ window.addEventListener("DOMContentLoaded",()=>{
   let loaderScreen = document.getElementById("loader");
   
   const threeScene = new windowConfig();
+  
   loaderScreen.style.display = "none";
 
 })

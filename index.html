@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>Chair Confrigrator chk</title>
+  <title>Chair Confrigrator v1</title>
   <link rel="stylesheet" href="./style.css">
 
 </head>
@@ -49,8 +49,8 @@
 <div class="tabs">
     <button class="tablinks active" onclick="openTab(event, 'Style')">Style</button>
     <button class="tablinks" onclick="openTab(event, 'Color')">Color</button>
-    <button class="tablinks" onclick="openTab(event, 'Config')">Config</button>
-    <button class="tablinks" onclick="openTab(event, 'Price')">Price</button>
+     <button class="tablinks" onclick="openTab(event, 'Material')">Material</button>
+    <!-- <button class="tablinks" onclick="openTab(event, 'Price')">Price</button>  -->
   </div>
   
   <!-- <div id="Style" class="tabcontent" style="display:block;">
@@ -91,9 +91,9 @@
   <div id="Color" class="tabcontent">
     <h3>Outer Color:</h3>
     <div class="color-options">
-      <div class="color-item-out" style="background-color:#B22222;" data-color-name="Valis Red"></div>
-      <div class="color-item-out" style="background-color:#FFC0CB;" data-color-name="Avocado"></div>
-      <div class="color-item-out" style="background-color:#0F52BA;" data-color-name="Geneva blue"></div>
+      <div class="color-item-out" style="background-color:#800020;" data-color-name="Burgundy"></div>
+      <div class="color-item-out" style="background-color:#3E2723;" data-color-name="Espresso"></div>
+      <div class="color-item-out" style="background-color:#8B4513;" data-color-name="Tan"></div>
     </div>
 
     <h3>Outer Color Custom:</h3>
@@ -101,9 +101,9 @@
 
     <h3>Inner Color:</h3>
     <div class="color-options">
-      <div class="color-item" style="background-color:#B22222;" data-color-name="Valis Red"></div>
-      <div class="color-item" style="background-color:#FFC0CB;" data-color-name="Avocado"></div>
-      <div class="color-item" style="background-color:#0F52BA;" data-color-name="Geneva blue"></div>
+      <div class="color-item" style="background-color:#800020;" data-color-name="Burgundy"></div>
+      <div class="color-item" style="background-color:#3E2723;" data-color-name="Espresso"></div>
+      <div class="color-item" style="background-color:#8B4513;" data-color-name="Tan"></div>
       <!-- <div class="color-item" style="background-color:#008000;"  data-color-name="Clover"></div>
       <div class="color-item" style="background-color:#FFA500;"  data-color-name="Burnt Orange"></div>
       <div class="color-item" style="background-color:#8B4513;" data-color-name="Rustic Bronze"></div> -->
@@ -114,9 +114,9 @@
 
     <h3>Leg Color:</h3>
     <div class="color-options">
-      <div class="color-item" style="background-color:#B22222;" data-color-name="Valis Red"></div>
-      <div class="color-item" style="background-color:#FFC0CB;" data-color-name="Avocado"></div>
-      <div class="color-item" style="background-color:#0F52BA;" data-color-name="Geneva blue"></div>
+      <div class="color-item-leg" style="background-color:#800020;" data-color-name="Burgundy"></div>
+      <div class="color-item-leg" style="background-color:#3E2723;" data-color-name="Espresso"></div>
+      <div class="color-item-leg" style="background-color:#8B4513;" data-color-name="Tan"></div>
       <!-- <div class="color-item" style="background-color:#008000;"  data-color-name="Clover"></div>
       <div class="color-item" style="background-color:#FFA500;"  data-color-name="Burnt Orange"></div>
       <div class="color-item" style="background-color:#8B4513;" data-color-name="Rustic Bronze"></div> -->
@@ -127,17 +127,37 @@
   </div>
   
   
-  <div id="Config" class="tabcontent">
-    <!-- Configuration form for Width and Length -->
-    <form id="configForm">
-      <label for="width">Width:</label>
-      <input type="number" id="width" name="width" min="1" placeholder="Enter width" required>
+  <div id="Material" class="tabcontent">
+    <h3>Outer Material:</h3>
+    <div class="material-options">
+      <div class="material-item-out" style="background-color:#800020;" data-material-name="Burgundy"></div>
+      <div class="material-item-out" style="background-color:#3E2723;" data-material-name="Espresso"></div>
+      <div class="material-item-out" style="background-color:#8B4513;" data-material-name="Tan"></div>
+    </div>
+
+   
+
+    <h3>Inner Material:</h3>
+    <div class="material-options">
+      <div class="material-item" style="background-color:#800020;" data-material-name="Burgundy"></div>
+      <div class="material-item" style="background-color:#3E2723;" data-material-name="Espresso"></div>
+      <div class="material-item" style="background-color:#8B4513;" data-material-name="Tan"></div>
+      
+     
+    </div>
+
+    
+
+    <h3>Leg Material:</h3>
+    <div class="material-options">
+      <div class="material-item-leg" style="background-color:#5D2E1F;" data-material-name="Walnut Brown"></div>
+      <div class="material-item-leg" style="background-color:#E9CDA4;" data-material-name="Natural Oak"></div>
+      <div class="material-item-leg" style="background-color:#EAEAEA;" data-material-name="Chrome"></div>
+
+    </div>
+
   
-      <label for="length">Length:</label>
-      <input type="number" id="length" name="length" min="1" placeholder="Enter length" required>
-  
-      <button type="submit" class="submit-btn">Submit</button>
-    </form>
+  </div>
   </div>
   <div id="loader">
     <div data-glitch="Loading..." class="glitch">Loading...</div>
