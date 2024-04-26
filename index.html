@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Chair Confrigrator v1</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!-- A simplified version of https://sbcode.net/threejs/follow-cam/ -->
+
+<!-- <script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/three@0.137.0/examples/js/loaders/DRACOLoader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.137.0/examples/js/loaders/GLTFLoader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.137.0/examples/js/loaders/RGBELoader.js"></script> -->
+
+<script type="importmap">
+  {
+		"imports": {
+			"three": "/node_modules/three/build/three.module.js",
+      "three/": "/node_modules/three/"
+		}
+
+	}
+</script>
+
+<!-- <div class="tabbed-menu">
+    <ul>
+        <li><a href="#style">Style</a></li>
+        <li><a href="#color">Color</a></li>
+        <li><a href="#config">Config</a></li>
+        <li><a href="#price">Price</a></li>
+    </ul>
+</div>
+
+<div class="tab-content" id="style">
+    <div class="image-container">
+        <a href="#"><img src="model1.jpg" alt="Model 1"></a>
+    </div>
+    <div class="image-container">
+        <a href="#"><img src="model2.jpg" alt="Model 2"></a>
+    </div>
+    <div class="image-container">
+        <a href="#"><img src="model3.jpg" alt="Model 3"></a>
+    </div>
+    <div class="image-container">
+        <a href="#"><img src="model4.jpg" alt="Model 4"></a>
+    </div>
+</div> -->
+<!-- partial -->
+
+<div class="tabs">
+    <button class="tablinks active" onclick="openTab(event, 'Style')">Style</button>
+    <button class="tablinks" onclick="openTab(event, 'Color')">Color</button>
+     <button class="tablinks" onclick="openTab(event, 'Material')">Material</button>
+    <!-- <button class="tablinks" onclick="openTab(event, 'Price')">Price</button>  -->
+  </div>
+  
+  <!-- <div id="Style" class="tabcontent" style="display:block;">
+    <a href="#style1"><img src="assets/style1.png" alt="Style 1" /></a>
+    <a href="#style2"><img src="assets/style2.png" alt="Style 2" /></a>
+    <a href="#style3"><img src="assets/style3.png" alt="Style 3" /></a>
+    <a href="#style4"><img src="assets/style4.png" alt="Style 4" /></a>
+  /*  <a href="#style5"><img src="style5.png" alt="Style 5" /></a> 
+  </div> -->
+
+  <div id="Style" class="tabcontent" style="display: block;">
+    <div class="style-options">
+      <div class="style-item">
+        <img src="assets/leg1.png" alt="Style 1" class="style-img" data-style-name="Style 1" />
+        <div class="style-name">Leg style 1</div>
+      </div>
+      <div class="style-item">
+        <img src="assets/leg 2.png" alt="Style 2" class="style-img" data-style-name="Style 2" />
+        <div class="style-name">Leg style 2</div>
+      </div>
+      <!-- <div class="style-item">
+        <img src="assets/style3.png" alt="Style 3" />
+        <div class="style-name">Style 3</div>
+      </div>
+      <div class="style-item">
+        <img src="assets/style4.png" alt="Style 4" />
+        <div class="style-name">Style 4</div>
+      </div>
+      <div class="style-item">
+        <img src="assets/style5.png" alt="Style 5" />
+        <div class="style-name">Style 5</div> -->
+      </div>
+    </div>
+  </div>
+
+
+
+  <div id="Color" class="tabcontent">
+    <h3>Outer Color:</h3>
+    <div class="color-options">
+      <div class="color-item-out" style="background-color:#800020;" data-color-name="Burgundy"></div>
+      <div class="color-item-out" style="background-color:#3E2723;" data-color-name="Espresso"></div>
+      <div class="color-item-out" style="background-color:#8B4513;" data-color-name="Tan"></div>
+    </div>
+
+    <h3>Outer Color Custom:</h3>
+    <input type="color" id="outerColorPicker" value="#ffffff">
+
+    <h3>Inner Color:</h3>
+    <div class="color-options">
+      <div class="color-item" style="background-color:#800020;" data-color-name="Burgundy"></div>
+      <div class="color-item" style="background-color:#3E2723;" data-color-name="Espresso"></div>
+      <div class="color-item" style="background-color:#8B4513;" data-color-name="Tan"></div>
+      <!-- <div class="color-item" style="background-color:#008000;"  data-color-name="Clover"></div>
+      <div class="color-item" style="background-color:#FFA500;"  data-color-name="Burnt Orange"></div>
+      <div class="color-item" style="background-color:#8B4513;" data-color-name="Rustic Bronze"></div> -->
+    </div>
+
+    <h3>Inner Color Custom:</h3>
+    <input type="color" id="innerColorPicker" value="#ffffff">
+
+    <h3>Leg Color:</h3>
+    <div class="color-options">
+      <div class="color-item-leg" style="background-color:#800020;" data-color-name="Burgundy"></div>
+      <div class="color-item-leg" style="background-color:#3E2723;" data-color-name="Espresso"></div>
+      <div class="color-item-leg" style="background-color:#8B4513;" data-color-name="Tan"></div>
+      <!-- <div class="color-item" style="background-color:#008000;"  data-color-name="Clover"></div>
+      <div class="color-item" style="background-color:#FFA500;"  data-color-name="Burnt Orange"></div>
+      <div class="color-item" style="background-color:#8B4513;" data-color-name="Rustic Bronze"></div> -->
+    </div>
+
+    <h3>Leg Color Custom:</h3>
+    <input type="color" id="legColorPicker" value="#ffffff">
+  </div>
+  
+  
+  <div id="Material" class="tabcontent">
+    <h3>Outer Material:</h3>
+    <div class="material-options">
+      <div class="material-item-out" style="background-color:#800020;" data-material-name="Burgundy"></div>
+      <div class="material-item-out" style="background-color:#3E2723;" data-material-name="Espresso"></div>
+      <div class="material-item-out" style="background-color:#8B4513;" data-material-name="Tan"></div>
+    </div>
+
+   
+
+    <h3>Inner Material:</h3>
+    <div class="material-options">
+      <div class="material-item" style="background-color:#800020;" data-material-name="Burgundy"></div>
+      <div class="material-item" style="background-color:#3E2723;" data-material-name="Espresso"></div>
+      <div class="material-item" style="background-color:#8B4513;" data-material-name="Tan"></div>
+      
+     
+    </div>
+
+    
+
+    <h3>Leg Material:</h3>
+    <div class="material-options">
+      <div class="material-item-leg" style="background-color:#5D2E1F;" data-material-name="Walnut Brown"></div>
+      <div class="material-item-leg" style="background-color:#E9CDA4;" data-material-name="Natural Oak"></div>
+      <div class="material-item-leg" style="background-color:#EAEAEA;" data-material-name="Chrome"></div>
+
+    </div>
+
+  
+  </div>
+  </div>
+  <div id="loader">
+    <div data-glitch="Loading..." class="glitch">Loading...</div>
+  </div>
+
+<script>
+    function openTab(evt, tabName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(tabName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.querySelector('.tablinks.active').click();
+
+</script>  
+  <script type="module" src="./test.js"></script>
+  <script type="module">
+    import * as THREE from '/node_modules/three/build/three.module.js';
+    import { OrbitControls } from '/node_modules/three/examples/jsm/controls/OrbitControls.js';
+    import { GLTFLoader } from '/node_modules/three/examples/jsm/loaders/GLTFLoader.js';
+  
+    // Your Three.js code here
+  </script>
+
+</body>
+</html>
